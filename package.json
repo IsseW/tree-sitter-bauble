@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-bauble",
   "version": "0.1.0",
-  "description": "A dependency driven asset decleration language",
+  "description": "Bauble grammar for tree-sitter",
   "repository": "github:tree-sitter/tree-sitter-bauble",
   "license": "MIT",
   "author": {
@@ -46,18 +46,5 @@
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.bauble",
-      "file-types": ["bbl"],
-      "injection-regex": "^bauble$",
-      "highlights": [
-        "queries/highlights.scm"
-      ],
-      "locals": [
-        "queries/locals.scm"
-      ]
-    }
-  ]
+  }
 }

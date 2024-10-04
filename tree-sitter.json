@@ -3,16 +3,20 @@
     {
       "name": "bauble",
       "camelcase": "Bauble",
-      "scope": "source.bauble",
+      "scope": "source.bbl",
       "path": ".",
-      "file-types": ["bbl", "bauble"],
+      "file-types": [
+        "bbl"
+      ],
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
       "injection-regex": "^bauble$"
     }
   ],
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
-    "description": "A dependency driven asset decleration language",
+    "description": "Bauble grammar for tree-sitter",
     "authors": [
       {
         "name": "Isse",
@@ -20,7 +24,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/IsseW/tree-sitter-bauble"
+      "repository": "https://github.com/tree-sitter/tree-sitter-bauble"
     }
   },
   "bindings": {
