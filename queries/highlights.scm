@@ -13,6 +13,8 @@
 
 (field (identifier) @variable.field)
 
+(attribute_inner (identifier) @variable.field)
+
 "," @punctuation.delimiter
 ":" @punctuation.delimiter
 
