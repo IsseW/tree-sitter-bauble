@@ -6,7 +6,8 @@
       "scope": "source.bbl",
       "path": ".",
       "file-types": [
-        "bbl"
+        "bbl",
+        "bauble"
       ],
       "highlights": "queries/highlights.scm",
       "locals": "queries/locals.scm",

@@ -25,12 +25,8 @@
     "src/**",
     "*.wasm"
   ],
-  "dependencies": {
-    "node-addon-api": "^8.0.0",
-    "node-gyp-build": "^4.8.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "prebuildify": "^6.0.1",
     "tree-sitter-cli": "^0.24.1"
   },
   "peerDependencies": {
