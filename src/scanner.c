@@ -112,6 +112,10 @@ bool tree_sitter_bauble_external_scanner_scan(void *payload, TSLexer *lexer,
       opening_count++;
     }
 
+    if (opening_count < 2) {
+      return false;
+    }
+
     for (;;) {
       if (lexer->lookahead == 0) {
         return false;

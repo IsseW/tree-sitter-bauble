@@ -4,8 +4,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
+      "types": [
+        {
+          "type": "seq_inner",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assignment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "value",
@@ -19,15 +34,30 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "attribute_inner",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute_inner",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
           "named": true
         },
         {
-          "type": "value",
+          "type": "identifier",
           "named": true
         }
       ]
@@ -90,6 +120,10 @@
         },
         {
           "type": "inner_use",
+          "named": true
+        },
+        {
+          "type": "use_list",
           "named": true
         }
       ]
@@ -159,8 +193,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
+      "types": [
+        {
+          "type": "map_inner",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "map_inner",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "value",
@@ -183,15 +232,15 @@
       "required": true,
       "types": [
         {
+          "type": "assignment",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
         {
           "type": "type_decl",
-          "named": true
-        },
-        {
-          "type": "value",
           "named": true
         }
       ]
@@ -228,6 +277,21 @@
     }
   },
   {
+    "type": "seq_inner",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {},
@@ -255,11 +319,26 @@
       "required": true,
       "types": [
         {
-          "type": "field",
+          "type": "path",
           "named": true
         },
         {
-          "type": "path",
+          "type": "struct_inner",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct_inner",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "field",
           "named": true
         }
       ]
@@ -278,7 +357,7 @@
           "named": true
         },
         {
-          "type": "value",
+          "type": "seq_inner",
           "named": true
         }
       ]
@@ -305,6 +384,21 @@
     "fields": {},
     "children": {
       "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "inner_use",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "use_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
       "required": true,
       "types": [
         {

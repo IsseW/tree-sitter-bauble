@@ -17,16 +17,20 @@ module.exports = grammar({
     use: $ => seq('use', optional('::'), $.inner_use, ';'),
     inner_use: $ => choice(
       $.final_use,
-      seq($.identifier, '::', choice(seq('{', sep(',', $.inner_use), '}'), $.inner_use))
+      seq($.identifier, '::', choice(seq('{', $.use_list, '}'), $.inner_use))
     ),
+    use_list: $ => sep1(',', $.inner_use),
     final_use: $ => $.identifier,
 
-    object: $ => choice(seq($.identifier, optional($.type_decl), '=', $.value), seq('copy', $.identifier, '=', $.value)),
+    object: $ => choice(seq($.identifier, optional($.type_decl), $.assignment), seq('copy', $.identifier, $.assignment)),
     type_decl: $ => seq(':', $.path),
 
     value: $ => seq(repeat($.attribute), $.inner_value),
 
-    attribute: $ => seq('#[', sep(',', seq($.identifier, '=', $.value)), ']'),
+    attribute: $ => seq('#[', $.attribute_inner, ']'),
+    attribute_inner: $ => sep1(',', seq($.identifier, $.assignment)),
+
+    assignment: $ => seq('=', $.value),
 
     inner_value: $ => choice(
       $.unit,
@@ -43,11 +47,17 @@ module.exports = grammar({
       $.literal,
     ),
 
-    map: $ => seq('{', sep(',', seq($.value, ':', $.value)), '}'),
-    struct: $ => seq($.path, '{', sep(',', $.field), '}'),
+    map: $ => seq('{', optional($.map_inner), '}'),
+    map_inner: $ => sep1(',', seq($.value, ':', $.value)),
+
+    struct: $ => seq($.path, '{', optional($.struct_inner), '}'),
+    struct_inner: $ => sep1(',', $.field),
     field: $ => seq($.identifier, ':', $.value),
-    tuple: $ => seq(optional($.path), '(', sep(',', $.value), ')'),
-    array: $ => seq('[', sep(',', $.value), ']'),
+
+    tuple: $ => seq(optional($.path), '(', optional($.seq_inner), ')'),
+    array: $ => seq('[', optional($.seq_inner), ']'),
+
+    seq_inner: $ => sep1(',', $.value),
 
     unit: $ => '()',
     bool: $ => choice('false', 'true'),
