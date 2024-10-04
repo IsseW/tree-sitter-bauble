@@ -16,11 +16,12 @@ module.exports = grammar({
     source_file: $ => seq(repeat($.use), repeat($.object)),
     use: $ => seq('use', optional('::'), $.inner_use, ';'),
     inner_use: $ => choice(
-      $.final_use,
-      seq($.identifier, '::', choice(seq('{', $.use_list, '}'), $.inner_use))
+      $.final_path_part,
+      seq($.path_part, '::', choice(seq('{', $.use_list, '}'), $.inner_use))
     ),
     use_list: $ => sep1(',', $.inner_use),
-    final_use: $ => $.identifier,
+    path_part: $ => $.identifier,
+    final_path_part: $ => $.identifier,
 
     object: $ => choice(seq($.identifier, optional($.type_decl), $.assignment), seq('copy', $.identifier, $.assignment)),
     type_decl: $ => seq(':', $.path),
@@ -64,7 +65,7 @@ module.exports = grammar({
 
     ref: $ => seq('$', $.path),
 
-    path: $ => seq(optional('::'), $.identifier, repeat(seq('::', $.identifier))),
+    path: $ => seq(optional('::'), repeat(seq($.path_part, '::')), $.final_path_part),
 
     identifier: $ => /(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/,
     number: $ => seq(/\d+/, optional(seq('.', /\d+/))),

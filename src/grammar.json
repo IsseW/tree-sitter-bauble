@@ -54,14 +54,14 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "final_use"
+          "name": "final_path_part"
         },
         {
           "type": "SEQ",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "identifier"
+              "name": "path_part"
             },
             {
               "type": "STRING",
@@ -134,7 +134,11 @@
         }
       ]
     },
-    "final_use": {
+    "path_part": {
+      "type": "SYMBOL",
+      "name": "identifier"
+    },
+    "final_path_part": {
       "type": "SYMBOL",
       "name": "identifier"
     },
@@ -668,24 +672,24 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
           "type": "REPEAT",
           "content": {
             "type": "SEQ",
             "members": [
               {
-                "type": "STRING",
-                "value": "::"
+                "type": "SYMBOL",
+                "name": "path_part"
               },
               {
-                "type": "SYMBOL",
-                "name": "identifier"
+                "type": "STRING",
+                "value": "::"
               }
             ]
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "final_path_part"
         }
       ]
     },
